@@ -19,3 +19,14 @@ SandboxTest >> testPrecedence [
 	self assert: 3 + 2 * 10 equals: 50. "通常の演算規則とは異なり、先に3+2が計算される（左が先）"
 	self assert: 3 + (2 * 10) equals: 23. "括弧をつければよい"
 ]
+
+{ #category : #tests }
+SandboxTest >> testSequenceAndCascade [
+	self assert: (OrderedCollection new add: 1) class name equals: 'SmallInteger'. "addは新しく追加した要素を返す"
+	self assert: (OrderedCollection new 
+		add: 1;
+		add: 2;
+		yourself) class name
+		equals: 'OrderedCollection'.
+	
+]
