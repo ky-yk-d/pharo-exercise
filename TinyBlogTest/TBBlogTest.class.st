@@ -80,3 +80,10 @@ TBBlogTest >> testUnclassifiedBlogPosts [
 	blog writeBlogPost: TBPost new.
 	self assert: (blog allBlogPosts select: [ :p | p isUnclassified ]) size equals: 1.
 ]
+
+{ #category : #running }
+TBBlogTest >> testUtility [
+	| demoBlog |
+	demoBlog := TBBlog createDemoPosts ; current.
+	self assert: demoBlog size equals: 6. "createDemoPost -> 5, instance side #initialize -> 1"
+]
