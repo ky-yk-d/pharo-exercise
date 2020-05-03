@@ -5,6 +5,26 @@ Class {
 }
 
 { #category : #tests }
+SandboxTest >> testBlocks [
+	| block block2|
+	block := [ :x :y | x + y ].
+	self assert: (block value: 2 value:3) equals: 5.
+	block2 := [ :x :y | ^ (x + y) ].
+	self assert: (block value:2 value:3) equals: 5
+]
+
+{ #category : #tests }
+SandboxTest >> testLoops [
+	| num |
+	1 to: 100 do: [ :i | Transcript show: i ; space ]. "1 2 3 4 5 .... 99 100"
+	1 to: 100 by: 3 do: [ :i | Transcript show: i ; space ]. "1 4 7 10 ... 97 100"
+	#(15 10 19 68) do: [ :i | Transcript show: i ; cr  ].
+	num := 1.
+	[ num < 5 ] whileTrue: [ Transcript show: num. num := num + 1]. "1234"
+	[ Transcript show: num. num := num + 1. num < 10] whileTrue.
+]
+
+{ #category : #tests }
 SandboxTest >> testPrecedence [
 	| temp |
 	self assert: 1000 factorial class name equals: 'LargePositiveInteger'. "left to right"
