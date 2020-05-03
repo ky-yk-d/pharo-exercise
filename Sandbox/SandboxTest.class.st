@@ -14,6 +14,18 @@ SandboxTest >> testBlocks [
 ]
 
 { #category : #tests }
+SandboxTest >> testBooleans [
+	| num |
+	num := true
+		ifTrue: [ 2 ]
+		ifFalse: [ 3 ].
+	self assert: num equals: 2.
+	#(1 3 5)
+		ifEmpty: [ Transcript show: 'Empty List passed!' ]
+		ifNotEmpty: [ :aList | Transcript show: (aList at: 2) ].
+]
+
+{ #category : #tests }
 SandboxTest >> testLoops [
 	| num |
 	1 to: 100 do: [ :i | Transcript show: i ; space ]. "1 2 3 4 5 .... 99 100"
