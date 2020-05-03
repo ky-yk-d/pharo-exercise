@@ -26,6 +26,20 @@ SandboxTest >> testBooleans [
 ]
 
 { #category : #tests }
+SandboxTest >> testCollections [
+	| heroines |
+	self assert: ((Set withAll: #(7 7 3 13)) includesAll: #(7 3 13)).
+	self assert: (Set withAll: #(1 1 3 6)) equals: (Set with: 1 with: 3 with: 6).
+	self assert: (OrderedCollection new: 5 withAll: 'a') equals: (OrderedCollection withAll: #('a' 'a' 'a' 'a' 'a' )).
+	self assert: (#('Calvin' 'hates' 'Suzan') at: 2) equals: 'hates'. "インデックスは1-origin"
+	self assert: ((#('Calvin' 'hates' 'Suzie') at: 2 put: 'loves'; yourself) at: 2) equals: 'loves'.
+	self assert: (#('Calvin' 'hates' 'Suzie')  asOrderedCollection addFirst: 'Recently'; at: 2) equals: 'Calvin'.
+	heroines := { #Kanon -> 'Ayu'. #Air -> 'Misuzu'. #CLANNAD -> 'Nagisa' } asDictionary.
+	self assert:  (heroines at: #Air) equals: 'Misuzu'.
+	
+]
+
+{ #category : #tests }
 SandboxTest >> testLoops [
 	| num |
 	1 to: 100 do: [ :i | Transcript show: i ; space ]. "1 2 3 4 5 .... 99 100"
