@@ -62,3 +62,11 @@ SandboxTest >> testSequenceAndCascade [
 		equals: 'OrderedCollection'.
 	
 ]
+
+{ #category : #tests }
+SandboxTest >> testYourself [
+	| set |
+	self assert: (Set new add: 2) equals: 2.
+	set := (Set new add: 3; yourself).
+	self assert: ((set add: 2; yourself) includes: 3)
+]
