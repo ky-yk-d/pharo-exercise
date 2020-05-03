@@ -67,6 +67,11 @@ TBPost >> initialize [
 ]
 
 { #category : #operations }
+TBPost >> isUnclassified [
+	^ category = (self class unclassifiedTag).
+]
+
+{ #category : #operations }
 TBPost >> isVisible [
 	^  visible
 ]
