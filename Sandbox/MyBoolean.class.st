@@ -15,6 +15,6 @@ MyBoolean >> not [
 ]
 
 { #category : #accessing }
-MyBoolean >> or: arg1 [ 
+MyBoolean >> | aBoolean [ 
 	^ self subclassResponsibility
 ]
