@@ -18,7 +18,7 @@ MyFalse >> not [
 	^ MyTrue getInstance
 ]
 
-{ #category : #operations }
-MyFalse >> or: aBoolean [ 
+{ #category : #operators }
+MyFalse >> | aBoolean [ 
 	^ aBoolean
 ]

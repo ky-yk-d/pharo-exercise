@@ -18,8 +18,8 @@ MyBooleansTest >> testOr [
 	| myTrue myFalse |
 	myTrue := MyTrue getInstance.
 	myFalse := MyFalse getInstance.
-	self assert: (myTrue or: myTrue) equals: myTrue.
-	self assert: (myTrue or: myFalse) equals: myTrue.
-	self assert: (myFalse or: myTrue) equals: myTrue.
-	self assert: (myFalse or: myFalse) equals: myFalse.
+	self assert: (myTrue | myTrue) equals: myTrue.
+	self assert: (myTrue | myFalse) equals: myTrue.
+	self assert: (myFalse | myTrue) equals: myTrue.
+	self assert: (myFalse | myFalse) equals: myFalse.
 ]

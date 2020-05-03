@@ -19,6 +19,6 @@ MyTrue >> not [
 ]
 
 { #category : #operators }
-MyTrue >> or: aBoolean [
+MyTrue >> | aBoolean [
 	 ^ self class getInstance
 ]
