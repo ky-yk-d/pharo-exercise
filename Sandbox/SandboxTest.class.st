@@ -98,6 +98,18 @@ SandboxTest >> testSequenceAndCascade [
 ]
 
 { #category : #tests }
+SandboxTest >> testStream [
+	| stream |
+	stream := #($a $b $c $d $e $f) readStream.
+	self assert: stream next equals: $a.
+	self assert: (stream upTo: $d) equals: #($b $c).
+	stream := (Array new: 6) writeStream .
+	self assert: ((stream nextPut: 1; yourself) contents) equals: #(1).
+	self assert: stream position equals: 1.
+	self assert: ((stream nextPutAll: #(4 6);yourself) contents) equals: #(1 4 6).
+]
+
+{ #category : #tests }
 SandboxTest >> testYourself [
 	| set |
 	self assert: (Set new add: 2) equals: 2.
