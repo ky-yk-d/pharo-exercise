@@ -40,6 +40,26 @@ SandboxTest >> testCollections [
 ]
 
 { #category : #tests }
+SandboxTest >> testIterators [
+	self assert: (#(14  -12 7 -11) collect: [ :i | i odd ]) equals: #(false false true true). "JavaのStream#mapに相当"
+	self assert: (#(12 -4 2 -3) select: [ :i | i abs > 3 ]) equals: #(12 -4). "JavaのStream#filterに相当"
+	self assert: (#(3 8 4 10 11) detect: [ :i | i > 9 ]) equals: 10. "JavaのStream#findFirstに相当"
+	self assert: (#(3 5 9 12 7) includes: 9).  
+	self assert: (#(3 5 6) select: #odd) equals: #(3 5). "Unary Messageはブロックの代わりにシンボルを渡すこともできる"
+	self assert: (#(3 4 5) anySatisfy: #even).
+	self assert: (#('a' 'b' 'c' 'd') pairsCollect: [ :i :j | i , j ]) equals: #('ab' 'cd').  "2つずつ要素を組として扱う"
+	self assert: (#(1 2 3) with: #(10 20 30) collect: [ :x :y | x * y ]) equals: #(10 40 90). 
+	self assert: 
+	(String streamContents: [ :s | 
+		#('a' 'b' 'c')
+			do: [ :each | s << each ]
+			separatedBy: [ s << ',' ]
+		]) equals: 'a,b,c'.
+	self assert: ((#(1 2 3 4 5 6 7) groupedBy: #even) at: false) equals: #(1 3 5 7). 
+	self assert: (#(#(1 2) #(3) #(4) #(5 6)) flatCollect: [ :each | each ]) equals: #(1 2 3 4 5 6). "Stream#flatMap"
+]
+
+{ #category : #tests }
 SandboxTest >> testLoops [
 	| num |
 	1 to: 100 do: [ :i | Transcript show: i ; space ]. "1 2 3 4 5 .... 99 100"
