@@ -7,9 +7,24 @@ Class {
 	#category : #Dice
 }
 
+{ #category : #operations }
+DiceHandle >> + aDiceHandle [ 
+	
+	| handle |
+	handle := self class new.
+	dice do: [  :each | handle addDie: each  ].
+	aDiceHandle dice do: [ :each | handle addDie: each].
+	^ handle 
+]
+
 { #category : #adding }
 DiceHandle >> addDie: aDie [ 
 	dice add: aDie.
+]
+
+{ #category : #accessing }
+DiceHandle >> dice [
+	^ dice
 ]
 
 { #category : #accessing }

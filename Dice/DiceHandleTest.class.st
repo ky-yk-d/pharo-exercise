@@ -14,6 +14,13 @@ DiceHandleTest >> testAdding [
 ]
 
 { #category : #tests }
+DiceHandleTest >> testAddingHandles [
+	| h |
+	h := 2 D20 + 3 D6.
+	self assert: h diceNumber equals: 5.
+]
+
+{ #category : #tests }
 DiceHandleTest >> testAddingTwiceTheSameDieIsOK [
 	| h |
 	h := DiceHandle new
