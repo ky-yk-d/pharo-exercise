@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #tests }
+DieTest >> testBetterCreationInterface [
+	self shouldnt: [ Die faces: 20 ] raise: Error 
+]
+
+{ #category : #tests }
 DieTest >> testInitialization [ 
 
 	self shouldnt: [ Die new ] raise: Error 

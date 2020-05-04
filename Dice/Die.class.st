@@ -1,5 +1,9 @@
 "
 I'm simple die
+
+To create a die use
+
+	Die faces: 20
 "
 Class {
 	#name : #Die,
@@ -9,6 +13,20 @@ Class {
 	],
 	#category : #Dice
 }
+
+{ #category : #'instance creation' }
+Die class >> faces: anInteger [
+
+	| d |
+	d := self new.
+	d faces: anInteger.
+	^ d 
+]
+
+{ #category : #accessing }
+Die >> faces: anInteger [ 
+	faces := anInteger
+]
 
 { #category : #initialization }
 Die >> initialize [ 
