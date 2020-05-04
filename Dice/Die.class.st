@@ -24,6 +24,11 @@ Die class >> faces: anInteger [
 ]
 
 { #category : #accessing }
+Die >> faces [
+	^ faces
+]
+
+{ #category : #accessing }
 Die >> faces: anInteger [ 
 	faces := anInteger
 ]
