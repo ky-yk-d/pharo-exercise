@@ -5,6 +5,14 @@ Class {
 }
 
 { #category : #tests }
+ExerciseWeek3Test >> testChallenge1 [
+	| email url |
+	email := 'stephane.ducasse@inria.fr'.
+	url := 'http://www.gravatar.com/avatar/' , (MD5 hashMessage: email trimBoth asLowercase ) hex , '.jpg'.
+	self deny: ((ZnEasy getJpeg: url) isNil )"asMorph openInHand.".
+]
+
+{ #category : #tests }
 ExerciseWeek3Test >> testComparingExpressions [
 	| array result |
 	array := #(2 4 4 4  5 5 7 9).
