@@ -43,6 +43,13 @@ TBBlog class >> initialize [
 ]
 
 { #category : #initialization }
+TBBlog class >> initializeLocalhostMongoDB [
+	| repository |
+	repository := VOMongoRepository database: 'tinyblog'.
+	repository enableSingleton .
+]
+
+{ #category : #initialization }
 TBBlog class >> initializeVoyageOnMemoryDB [
 	VOMemoryRepository new enableSingleton 
 ]
@@ -55,7 +62,7 @@ TBBlog class >> isVoyageRoot [
 
 { #category : #initialization }
 TBBlog class >> reset [ 
-	self initializeVoyageOnMemoryDB 
+	self initializeLocalhostMongoDB 
 ]
 
 { #category : #action }
