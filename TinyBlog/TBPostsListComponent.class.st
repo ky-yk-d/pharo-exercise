@@ -18,10 +18,19 @@ TBPostsListComponent >> currentCategory: anObject [
 ]
 
 { #category : #rendering }
+TBPostsListComponent >> readSelectedPosts [
+	^ self currentCategory 
+		ifNil: [ self blog allVisibleBlogPosts  ]
+		ifNotNil: [ self blog allVisibleBlogPostsFromCategory: self currentCategory  ]
+]
+
+{ #category : #rendering }
 TBPostsListComponent >> renderContentOn: html [
 	super renderContentOn: html.
+	html render: (TBCategoriesComponent 
+		categories: (self blog allCategories) postsList: self ).
 	html tbsContainer: [ 
-		self blog allVisibleBlogPosts do: [ :p |
+		self readSelectedPosts do: [ :p |
 			html render: (TBPostComponent new post: p) ]
 	 ]
 	
